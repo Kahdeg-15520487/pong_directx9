@@ -50,6 +50,8 @@ public:
 		Velocity = velocity;
 	}
 
+	Vector2 ConstVelocity;
+
 	void ApplyMovement()
 	{
 		Position = Position + Velocity;

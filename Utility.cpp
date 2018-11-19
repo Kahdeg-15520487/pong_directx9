@@ -82,3 +82,37 @@ void DebugPrint(const float& f, const std::string &p) {
 	sprintf_s(msgbuf, "%s%f\n", p.c_str(), f);
 	OutputDebugStringA(msgbuf);
 }
+
+Direction VectorToDirection(float x, float y) {
+	if (y > 0)
+	{
+		if (x > 0)
+		{
+			return leftup;
+		}
+		else if (x < 0) {
+			return rightup;
+		}
+		else return up;
+	}
+	else if (y < 0) {
+		if (x > 0)
+		{
+			return leftdown;
+		}
+		else if (x < 0) {
+			return rightdown;
+		}
+		else return down;
+	}
+	else {
+		if (x > 0)
+		{
+			return left;
+		}
+		else if (x < 0) {
+			return right;
+		}
+		else return none;
+	}
+}

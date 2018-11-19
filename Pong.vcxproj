@@ -91,21 +91,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CommandManager.cpp" />
     <ClCompile Include="cute_c2.cpp" />
+    <ClCompile Include="DashCommand.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="ShootCommand.cpp" />
+    <ClCompile Include="StateManager.cpp" />
     <ClCompile Include="Utility.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="CommandManager.h" />
     <ClInclude Include="cute_c2.h" />
+    <ClInclude Include="DashCommand.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="AnimatedSprite.h" />
+    <ClInclude Include="MoveCameraCommand.h" />
     <ClInclude Include="MoveCommand2.h" />
     <ClInclude Include="ShootCommand.h" />
+    <ClInclude Include="StateManager.h" />
     <ClInclude Include="Utility.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Command.h" />
@@ -114,6 +124,54 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="World.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="res\beam_down.png" />
+    <CopyFileToFolders Include="res\dashing.png" />
+    <CopyFileToFolders Include="res\dash_shooting.png" />
+    <CopyFileToFolders Include="res\idle.png" />
+    <CopyFileToFolders Include="res\jumping.png" />
+    <CopyFileToFolders Include="res\jump_shooting.png" />
+    <CopyFileToFolders Include="res\running_cycle.png" />
+    <CopyFileToFolders Include="res\run_shooting_cycle.png" />
+    <CopyFileToFolders Include="res\stand_shooting.png" />
+    <CopyFileToFolders Include="res\start_running.png" />
+    <CopyFileToFolders Include="res\start_run_shooting.png" />
+    <CopyFileToFolders Include="res\the_beam.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="res\end_jump.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\fall.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\idle.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\run.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\sprite.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\stand_shooting.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_jump.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_run.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="res\dash.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_dash.json">
+      <FileType>Document</FileType>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

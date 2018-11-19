@@ -10,10 +10,7 @@ public:
 		Second = second;
 		CollideDirection = colDir;
 	}
-	~Collision() {
-		delete First;
-		delete Second;
-	}
+	~Collision() {}
 
 	Box* First;
 	Box* Second;

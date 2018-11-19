@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="spriteDef">
+      <UniqueIdentifier>{1ec2f8fc-99e8-43d1-8403-9a14829ba785}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -28,6 +31,24 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ShootCommand.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CommandManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StateManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DashCommand.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,5 +101,85 @@
     <ClInclude Include="MoveCommand2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MoveCameraCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DashCommand.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="res\end_jump.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\fall.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\idle.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\run.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\sprite.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\stand_shooting.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_jump.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_run.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\the_beam.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\beam_down.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\dash_shooting.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\dashing.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\idle.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\jump_shooting.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\jumping.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\run_shooting_cycle.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\running_cycle.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\stand_shooting.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_run_shooting.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_running.png">
+      <Filter>Resource Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\dash.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="res\start_dash.json">
+      <Filter>spriteDef</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 
 #include "RawInput.h"
 #include "World.h"
+#include "Camera.h"
 #include "Object.h"
 #include "Command.h"
 #include "CommandManager.h"
@@ -16,15 +17,23 @@ enum MoveType {
 class Game
 {
 public:
-	Game(LPDIRECT3DDEVICE9);
+	Game();
 	~Game();
+
+	void Init(LPDIRECT3DDEVICE9 d3ddv);
 
 	Object* player2;
 	Object* ball;
+	Direction WhoWin;
+	int p1Score;
+	int p2Score;
 
+	LPD3DXFONT DefaultFont = NULL;
 	Object* player;
 	std::vector<Object*> objs;
 	World* world;
+
+	Camera* camera;
 
 	std::vector<Command*> cmds;
 

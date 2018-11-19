@@ -237,9 +237,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	// Enter game message loop
 	MSG msg;
 	int done = 0;
+	int reload = 0;
 	DWORD frame_start = GetTickCount();;
 	DWORD tick_per_frame = 1000 / FRAME_RATE;
-	Game game = Game(d3ddv);
+	Game game = Game();
+	game.Init(d3ddv);
 	while (!done)
 	{
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -256,6 +258,25 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			break;
 		}
 
+		//todo check mem leak
+		reload = reload & raw.IsKeyUp(VK_BACK);
+		if (reload) {
+			reload = false;
+			game.Init(d3ddv);
+		}
+		else {
+			reload = raw.IsKeyDown(VK_BACK);
+			if (game.WhoWin != none) {
+				game.Init(d3ddv);
+				switch (game.WhoWin) {
+				case left:
+					break;
+				case right:
+					break;
+				}
+			}
+		}
+
 		DWORD now = GetTickCount();
 		DWORD deltaTime = now - frame_start;
 		if (now - frame_start >= tick_per_frame)
@@ -265,6 +286,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
 			if (d3ddv->BeginScene())
 			{
+				d3ddv->ColorFill(back_buffer, NULL, D3DCOLOR_XRGB(0, 40, 100));
+
 				game.Render(deltaTime, d3d, d3ddv, back_buffer, surface);
 
 				d3ddv->EndScene();

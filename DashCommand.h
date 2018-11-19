@@ -2,16 +2,17 @@
 #include "Utility.h"
 #include "Command.h"
 #include "Object.h"
-class MoveCommand :
+
+class DashCommand :
 	public Command
 {
 private:
 	Direction dir;
 public:
-	MoveCommand(Direction dir) {
+	DashCommand(Direction dir) {
 		this->dir = dir;
 	}
-	~MoveCommand() {}
+	~DashCommand() {}
 
 	virtual void execute(Object& obj) {
 		//todo move these to StateManager
@@ -24,16 +25,16 @@ public:
 		if (dir == left || dir == right) {
 			obj.Dir = dir;
 		}
-		Vector2 vt = GetMovementVector(dir);
+		Vector2 vt = GetMovementVector(dir) * 2;
 		obj.Coll->Move(vt);
 
 		switch (obj.moveState)
 		{
 		case idle:
-			obj.moveState = startRun;
+			obj.moveState = startDash;
 			break;
 		case startRun:
-			obj.moveState = run;
+			obj.moveState = dash;
 			break;
 		}
 	}

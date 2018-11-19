@@ -28,7 +28,6 @@ class AnimatedSprite
 private:
 	// sprite list
 	std::list<Sprite> frameList;
-	int currentFrame;
 	float frameRate;
 	bool isLoaded;
 
@@ -39,6 +38,7 @@ private:
 	// sotre infomation sprite
 	D3DXIMAGE_INFO _Info;
 public:
+	int currentFrame;
 	AnimatedSprite() { isLoaded = false; }
 	~AnimatedSprite() {
 		SAFE_DELETE(_Texture);
@@ -48,7 +48,7 @@ public:
 
 	bool IsLoaded() { return this->isLoaded; }
 
-	void Render(float DeltaTime, float X, float Y, float ScaleSize, float AnimationRate, float FlipX)
+	void Render(float DeltaTime, float X, float Y, D3DXVECTOR2& trans, float ScaleSize, float AnimationRate, float FlipX)
 	{
 		auto l_front = frameList.begin();
 		advance(l_front, currentFrame);
@@ -67,7 +67,7 @@ public:
 		D3DXMatrixScaling(&Scale, FlipX * ScaleSize, ScaleSize, ScaleSize);
 		Combined *= Scale;
 		// Translate the sprite
-		D3DXMatrixTranslation(&Translate, FlipX > 0 ? X : X + l_front->Width(), Y, 0.0f);
+		D3DXMatrixTranslation(&Translate, (FlipX > 0 ? X : X + l_front->Width()) + trans.x, Y + trans.y, 0.0f);
 		Combined *= Translate;
 		// Apply the transform.
 		_SpriteHandler->SetTransform(&Combined);
@@ -178,6 +178,7 @@ public:
 		}
 
 		aniSprite.isLoaded = true;
+		aniSprite.currentFrame = 0;
 		return true;
 	}
 };

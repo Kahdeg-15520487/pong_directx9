@@ -1,0 +1,10 @@
+{
+  "spriteCount" : 1,
+  "spriteRects" : [
+    {
+		"x" : 120,
+		"y" : 0,
+		"w" : 30,
+		"h" : 47
+	}
+}

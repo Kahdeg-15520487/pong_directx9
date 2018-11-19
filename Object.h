@@ -2,6 +2,7 @@
 #include "Box.h"
 #include "Vector2.h"
 #include "AnimatedSprite.h"
+#include "StateManager.h"
 #include "Game.h"
 
 class Game;
@@ -20,55 +21,84 @@ public:
 	Object(Game* game, Box* box) {
 		GameR = game;
 		Coll = box;
-		AniSprite = new AnimatedSprite();
+		moveState = idle;
+		isAnimationLoaded = false;
 		Dir = right;
 		IsBulletFree = true;
 		Bullet = nullptr;
 
 		Update = nullptr;
+		stateManager = new StateManager();
 	}
 	~Object() {
 		SAFE_DELETE(Coll);
-		SAFE_DELETE(AniSprite);
+		SAFE_DELETE(stateManager);
+		//SAFE_DELETE(AniSprite);
 	}
 
 	Game* GameR;
 	Box* Coll;
-	AnimatedSprite* AniSprite;
+	std::map<int, AnimatedSprite*> AniSprites;
+	bool isAnimationLoaded;
 	Direction Dir;
 	bool IsBulletFree;
 	Object* Bullet;
 
+	MoveState moveState;
+	StateManager* stateManager;
+
+	void LoadAniSprite(std::string sprdef, std::wstring sprsht, int state, LPDIRECT3DDEVICE9 d3ddv) {
+		AnimatedSprite* anispr = new AnimatedSprite();
+		AnimatedSprite::Load(*anispr, sprdef, sprsht, D3DCOLOR_XRGB(255, 0, 255), d3ddv);
+		anispr->currentFrame = 0;
+		AniSprites.insert(std::pair<int, AnimatedSprite*>(state, anispr));
+		isAnimationLoaded = true;
+	}
+
 	void(*Update)(Object* self);
 
-	void Render(DWORD deltaTime, LPDIRECT3D9 d3d, LPDIRECT3DDEVICE9 d3ddv, LPDIRECT3DSURFACE9 back_buffer, LPDIRECT3DSURFACE9 surface) {
+	AnimatedSprite* GetAniSprite() {
+		return AniSprites[moveState];
+	}
 
-		if (AniSprite->IsLoaded())
+	void Render(DWORD deltaTime, LPDIRECT3D9 d3d, LPDIRECT3DDEVICE9 d3ddv, LPDIRECT3DSURFACE9 back_buffer, LPDIRECT3DSURFACE9 surface, D3DXVECTOR2 &trans) {
+
+		if (isAnimationLoaded)
 		{
-			AniSprite->Render(deltaTime, Coll->X(), Coll->Y(), 1, 50, Dir == right ? 1 : -1);
+			auto AniSprite = GetAniSprite();
+			AniSprite->Render(deltaTime, Coll->X(), Coll->Y(), trans, 1, 50, Dir == right ? 1 : -1);
 			//return;
 		}
 
+		float x = Coll->X();
+		float y = Coll->Y();
 		RECT rectTop, rectRight, rectBottom, rectLeft;
 
-		rectTop.left = Coll->X();
-		rectTop.top = Coll->Y();
-		rectTop.right = rectTop.left + Coll->Width();
-		rectTop.bottom = rectTop.top + 5;
+		//translation for primitive
+		if (trans != D3DXVECTOR2())
+		{
+			x += trans.x;
+			y += trans.y;
+		}
 
-		rectRight.left = Coll->X() + Coll->Width() - 5;
-		rectRight.top = Coll->Y();
-		rectRight.right = rectRight.left + 5;
+		rectTop.left = x;
+		rectTop.top = y;
+		rectTop.right = rectTop.left + Coll->Width();
+		rectTop.bottom = rectTop.top + RECT_DENSE;
+
+		rectRight.left = x + Coll->Width() - RECT_DENSE;
+		rectRight.top = y;
+		rectRight.right = rectRight.left + RECT_DENSE;
 		rectRight.bottom = rectRight.top + Coll->Height();
 
-		rectBottom.left = Coll->X();
-		rectBottom.top = Coll->Y() + Coll->Height() - 5;
+		rectBottom.left = x;
+		rectBottom.top = y + Coll->Height() - RECT_DENSE;
 		rectBottom.right = rectBottom.left + Coll->Width();
-		rectBottom.bottom = rectBottom.top + 5;
+		rectBottom.bottom = rectBottom.top + RECT_DENSE;
 
-		rectLeft.left = Coll->X();
-		rectLeft.top = Coll->Y();
-		rectLeft.right = rectLeft.left + 5;
+		rectLeft.left = x;
+		rectLeft.top = y;
+		rectLeft.right = rectLeft.left + RECT_DENSE;
 		rectLeft.bottom = rectLeft.top + Coll->Height();
 
 		// get rect

@@ -1,10 +1,11 @@
 #pragma once
 #include "Utility.h"
 #include "Object.h"
-class Command 
+class Command
 {
 public:
 	Command() {}
 	~Command() {}
-	virtual void execute(Object& obj) = 0;
+	virtual void execute(Object& obj) {}
+	virtual void executeE() {}
 };

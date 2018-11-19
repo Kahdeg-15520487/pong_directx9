@@ -1,0 +1,19 @@
+sprite anchor between different state is on the down left corner
+per sprite width x height pixel
+flip for going left diraction
+
++the_beam: 1 frame - 8 x 48
++beam_down: 6 frame - 30 x 42
++idle: 3 frame - 30 x 34
++stand_shooting: 2 frame - 30 x 34
++jumping (keep frame 5 for falling, frame 6 & 7 for touching the ground): 7 frame - 30 x 47
++jump_shooting (keep frame 5 for falling, frame 6 & 7 for touching the ground): 7 frame - 36 x 47
++start_running (also for light tap on the arrow key): 1 frame - 30 x 34
++start_run_shooting (also for light tap on the arrow key): 1 frame - 35 x 34
++running_cycle (repeat): 10 frame - 34 x 35
++run_shooting_cycle (repeat): 10 frame - 39 x 35
++dashing (hold frame 2 while dashing): 2 frame - 38 x 31
++dash_shooting (hold frame 2 while dashing): 2 frame - 49 x 31
+
+there's still some extra left
+
