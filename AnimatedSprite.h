@@ -67,7 +67,7 @@ public:
 		D3DXMatrixScaling(&Scale, FlipX * ScaleSize, ScaleSize, ScaleSize);
 		Combined *= Scale;
 		// Translate the sprite
-		D3DXMatrixTranslation(&Translate, (FlipX > 0 ? X : X + l_front->Width()) + trans.x, Y + trans.y, 0.0f);
+		D3DXMatrixTranslation(&Translate, (FlipX > 0 ? X : X + l_front->Width()*ScaleSize) + trans.x, Y + trans.y, 0.0f);
 		Combined *= Translate;
 		// Apply the transform.
 		_SpriteHandler->SetTransform(&Combined);

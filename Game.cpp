@@ -59,7 +59,7 @@ void Game::Init(LPDIRECT3DDEVICE9 d3ddv) {
 
 	WhoWin = none;
 
-	player = AddDynamicObject(3, (SCREEN_HEIGHT / 2) - (75 / 2), 36, 36, "player1");
+	player = AddDynamicObject(3, (SCREEN_HEIGHT / 2) - (75 / 2), 72, 72, "player1");
 	//player->Update = PlayerUpdate;
 	//p1Score = 0;
 	//player->Coll->OnHit = DefaultCollision;

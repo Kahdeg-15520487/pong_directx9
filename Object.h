@@ -66,7 +66,7 @@ public:
 		if (isAnimationLoaded)
 		{
 			auto AniSprite = GetAniSprite();
-			AniSprite->Render(deltaTime, Coll->X(), Coll->Y(), trans, 1, 50, Dir == right ? 1 : -1);
+			AniSprite->Render(deltaTime, Coll->X(), Coll->Y(), trans, 2, 50, Dir == right ? 1 : -1);
 			//return;
 		}
 

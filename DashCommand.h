@@ -33,7 +33,8 @@ public:
 		case idle:
 			obj.moveState = startDash;
 			break;
-		case startRun:
+		case run:
+		case startDash:
 			obj.moveState = dash;
 			break;
 		}
